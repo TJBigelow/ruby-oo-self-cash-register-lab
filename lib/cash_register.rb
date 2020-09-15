@@ -19,15 +19,13 @@ class CashRegister
         @items.pop(@quantity)
         @prices.pop(@quantity)
         @total = @prices.sum
-        if @prices.length === 0
+        if @prices.length === 0 
             @total = 0
         end
     end
 
     def apply_discount
-        if @discount === nil
-            return "There is no discount to apply."
-        end
+        return "There is no discount to apply." if @discount === nil
         @total = @total * (1 - @discount * 0.01)
         "After the discount, the total comes to $#{@total.to_int}."
     end
