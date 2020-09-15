@@ -1,6 +1,7 @@
 require 'pry'
 class CashRegister
-    attr_accessor :discount, :total, :items, :prices
+    attr_accessor :discount, :total, :items
+    
     def initialize (discount=nil)
         @total = 0
         @discount = discount
@@ -18,7 +19,7 @@ class CashRegister
         @items.pop(@quantity)
         @prices.pop(@quantity)
         @total = @prices.sum
-        if prices.length === 0
+        if @prices.length === 0
             @total = 0
         end
     end
