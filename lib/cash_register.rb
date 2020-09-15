@@ -1,7 +1,7 @@
 require 'pry'
 class CashRegister
-    attr_accessor :discount, :total, :items
-    
+    attr_accessor :total
+    attr_reader :discount, :items
     def initialize (discount=nil)
         @total = 0
         @discount = discount
@@ -19,9 +19,7 @@ class CashRegister
         @items.pop(@quantity)
         @prices.pop(@quantity)
         @total = @prices.sum
-        if @prices.length === 0 
-            @total = 0
-        end
+        @total = 0 if @prices.length === 0
     end
 
     def apply_discount
@@ -29,5 +27,4 @@ class CashRegister
         @total = @total * (1 - @discount * 0.01)
         "After the discount, the total comes to $#{@total.to_int}."
     end
-
 end
